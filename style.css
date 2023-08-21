@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+body{
+  background: #bdc3c7;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+p{
+  font-size: 20px;
+  text-align: center;
+}
+.play_field{
+  background: white;
+  width: 140px;
+  height: 140px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 10px auto;
+}
+.start_button{
+  margin: 6px auto;
+  text-align: center;
+}
+#start{
+  all: unset;
+  padding: 10px 15px;
+  border-radius: 4px;
+  box-sizing: content-box;
+  background: #ef454a;
+  box-shadow: 0 4px 0 #d1483e;
+  display: inline-block;
+  cursor: pointer;
+}
+.inactive{
+  all: unset;
+  padding: 10px 15px;
+  border-radius: 4px;
+  box-sizing: content-box;
+  margin: 15px 5px;
+  background: #bdc3c7;
+  color: #bdc3c7;
+  display: inline-block;
+  cursor: pointer;
+}
+.active{
+  all: unset;
+  background: #3498db;
+  padding: 10px 15px;
+  border-radius: 4px;
+  box-sizing: content-box;
+  box-shadow: 0 4px 0 #2880b9;
+  margin: 15px 5px;
+  cursor: pointer;
+}
