@@ -12,7 +12,7 @@
       let index = Math.floor(Math.random() * numArray.length)
       buttonElement.textContent = numArray[index]
       numArray.splice(index,1)
-      touchButton(buttonElement)
+      touchButton(buttonElement,numArray)
     })
     //タイマー機能
     startTime = Date.now()
@@ -21,16 +21,27 @@
     },10)
   })
   
-  //ボタンの順番を判別する関数
+
   let judgeNum = 0
-  const touchButton = (button) => {
+  
+  const touchButton = (button,numArray) => { //引数としてnumArrayを渡す
+    const arrayMax = (a,b) => {
+      return Math.max(a,b)
+    }
+    const arrayMin = (a,b) => {
+      return Math.min(a,b)
+    } 
+    debugger
+    const max = numArray.reduce(arrayMax)
+    const min = numArray.reduce(arrayMin)
+    
     button.addEventListener('click',() => {
       if(button.textContent == judgeNum){
         button.classList.replace('active','inactive')
         judgeNum++
       }
-      if(judgeNum > 3){
-        judgeNum = 0
+      if(judgeNum > max){
+        judgeNum = min
         clearInterval(intervalID)
       }
     })
