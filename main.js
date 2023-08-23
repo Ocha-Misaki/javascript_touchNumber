@@ -3,23 +3,31 @@
   const startButton = document.getElementById('start')
   let startTime;
   let intervalID;
+  const numArray = [0,1,2,3] 
+  const playField = document.getElementById('play_field')
+  for(let i = 0; i < numArray.length; i++){
+    let buttonElement = document.createElement('button')
+    buttonElement.textContent = numArray[i]
+    buttonElement.className = 'inactive'
+    playField.appendChild(buttonElement)
+  }
   
-  startButton.addEventListener('click',()=>{
-    const buttonElements = document.querySelectorAll('.inactive')
-    const numArray = [0,1,2,3] 
-    buttonElements.forEach((buttonElement) => {
-      buttonElement.classList.replace('inactive','active')
-      let index = Math.floor(Math.random() * numArray.length)
-      buttonElement.textContent = numArray[index]
-      numArray.splice(index,1)
-      touchButton(buttonElement,numArray)
-    })
-    //タイマー機能
-    startTime = Date.now()
-    intervalID = setInterval(() => {
-      updateScore()
-    },10)
-  })
+  // startButton.addEventListener('click',()=>{
+  //   // const buttonElements = document.querySelectorAll('.inactive')
+  //   const numArray = [0,1,2,3] 
+  //   buttonElements.forEach((buttonElement) => {
+  //     buttonElement.classList.replace('inactive','active')
+  //     let index = Math.floor(Math.random() * numArray.length)
+  //     buttonElement.textContent = numArray[index]
+  //     numArray.splice(index,1)
+  //     touchButton(buttonElement,numArray)
+  //   })
+  //   //タイマー機能
+  //   startTime = Date.now()
+  //   intervalID = setInterval(() => {
+  //     updateScore()
+  //   },10)
+  // })
   
 
   let judgeNum = 0
