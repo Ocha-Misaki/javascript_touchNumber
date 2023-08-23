@@ -3,7 +3,10 @@
   const startButton = document.getElementById('start')
   let startTime;
   let intervalID;
-  const numArray = [0,1,2,3] 
+  const createNumArray = (num) => {
+    return Array.from({length:num }, (_, n) => n)
+  }
+  const numArray = createNumArray(4)
   const playField = document.getElementById('play_field')
   for(let i = 0; i < numArray.length; i++){
     let buttonElement = document.createElement('button')
