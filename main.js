@@ -15,7 +15,8 @@
     }
     return array
   }
-  const numArray = shuffleNumArray(createNumArray(4))
+  let buttonNum = 4
+  const numArray = shuffleNumArray(createNumArray(buttonNum))
   const playField = document.getElementById('play_field')
   for(let i = 0; i < numArray.length; i++){
     let buttonElement = document.createElement('button')
@@ -24,44 +25,31 @@
     playField.appendChild(buttonElement)
   }
   
-  // startButton.addEventListener('click',()=>{
-  //   // const buttonElements = document.querySelectorAll('.inactive')
-  //   const numArray = [0,1,2,3] 
-  //   buttonElements.forEach((buttonElement) => {
-  //     buttonElement.classList.replace('inactive','active')
-  //     let index = Math.floor(Math.random() * numArray.length)
-  //     buttonElement.textContent = numArray[index]
-  //     numArray.splice(index,1)
-  //     touchButton(buttonElement,numArray)
-  //   })
-  //   //タイマー機能
-  //   startTime = Date.now()
-  //   intervalID = setInterval(() => {
-  //     updateScore()
-  //   },10)
-  // })
+  startButton.addEventListener('click',()=>{
+    const buttonElements = document.querySelectorAll('.inactive')
+    buttonElements.forEach((buttonElement) => {
+      buttonElement.classList.replace('inactive','active')
+      
+      touchButton(buttonElement)
+    })
+    //タイマー機能
+    startTime = Date.now()
+    intervalID = setInterval(() => {
+      updateScore()
+    },10)
+  })
   
 
   let judgeNum = 0
   
-  const touchButton = (button,numArray) => { //引数としてnumArrayを渡す
-    const arrayMax = (a,b) => {
-      return Math.max(a,b)
-    }
-    const arrayMin = (a,b) => {
-      return Math.min(a,b)
-    } 
-    debugger
-    const max = numArray.reduce(arrayMax)
-    const min = numArray.reduce(arrayMin)
-    
+  const touchButton = (button) => { 
     button.addEventListener('click',() => {
       if(button.textContent == judgeNum){
         button.classList.replace('active','inactive')
         judgeNum++
       }
-      if(judgeNum > max){
-        judgeNum = min
+      if(judgeNum > buttonNum-1){
+        judgeNum = 0
         clearInterval(intervalID)
       }
     })
