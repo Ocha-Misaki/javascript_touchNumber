@@ -17,7 +17,7 @@
     //タイマー機能
     startTime = Date.now()
     intervalID = setInterval(() => {
-      countUp()
+      updateScore()
     },10)
   })
   
@@ -48,8 +48,7 @@
   }
 
   const score = document.getElementById('score')
-  //タイマーの関数
-  const countUp = () => {
+  const updateScore = () => {
     const elapsedTime = new Date(Date.now() - startTime)
     const milliSeconds = String(elapsedTime.getMilliseconds()).padStart(3,'0')
     const seconds = String(elapsedTime.getSeconds()).padStart(2,'0')
