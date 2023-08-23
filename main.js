@@ -47,12 +47,12 @@
     })
   }
 
-  const pElement = document.getElementById('score')
+  const score = document.getElementById('score')
   //タイマーの関数
   const countUp = () => {
     const elapsedTime = new Date(Date.now() - startTime)
     const milliSeconds = String(elapsedTime.getMilliseconds()).padStart(3,'0')
     const seconds = String(elapsedTime.getSeconds()).padStart(2,'0')
-    pElement.textContent = `${seconds}.${milliSeconds}`
+    score.textContent = `${seconds}.${milliSeconds}`
   }
 }
