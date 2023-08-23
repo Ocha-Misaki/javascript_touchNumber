@@ -6,7 +6,16 @@
   const createNumArray = (num) => {
     return Array.from({length:num }, (_, n) => n)
   }
-  const numArray = createNumArray(4)
+  const shuffleNumArray = (array) => {
+    for(let i = array.length-1; i > 0; i--){
+      let randomNum = Math.floor(Math.random() * i)
+      let tmp = array[i]
+      array[i] = array[randomNum]
+      array[randomNum] = tmp
+    }
+    return array
+  }
+  const numArray = shuffleNumArray(createNumArray(4))
   const playField = document.getElementById('play_field')
   for(let i = 0; i < numArray.length; i++){
     let buttonElement = document.createElement('button')
