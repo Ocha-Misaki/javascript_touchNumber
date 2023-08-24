@@ -15,21 +15,29 @@
     }
     return array
   }
+
   let buttonNum = 4
-  const numArray = shuffleNumArray(createNumArray(buttonNum))
   const playField = document.getElementById('play_field')
-  for(let i = 0; i < numArray.length; i++){
-    let buttonElement = document.createElement('button')
-    buttonElement.textContent = numArray[i]
-    buttonElement.className = 'inactive'
-    playField.appendChild(buttonElement)
+
+  const createButton = () => {
+    const numArray = shuffleNumArray(createNumArray(buttonNum))
+    for(let i = 0; i < numArray.length; i++){
+      let buttonElement = document.createElement('button')
+      buttonElement.textContent = numArray[i]
+      buttonElement.className = 'inactive'
+      playField.appendChild(buttonElement)
+    }
   }
+  createButton()
   
   startButton.addEventListener('click',()=>{
+    while(playField.firstChild !== null){
+      playField.removeChild(playField.firstChild)
+    }
+    createButton()
     const buttonElements = document.querySelectorAll('.inactive')
     buttonElements.forEach((buttonElement) => {
       buttonElement.classList.replace('inactive','active')
-      
       touchButton(buttonElement)
     })
     //タイマー機能
