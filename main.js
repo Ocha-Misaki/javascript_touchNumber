@@ -1,8 +1,6 @@
 {
   'use strict'
-  const startButton = document.getElementById('start')
-  let startTime;
-  let intervalID;
+
   const createNumArray = (num) => {
     return Array.from({length:num }, (_, n) => n)
   }
@@ -18,7 +16,6 @@
 
   let buttonNum = 4
   const playField = document.getElementById('play_field')
-
   const createButton = () => {
     const numArray = shuffleNumArray(createNumArray(buttonNum))
     for(let i = 0; i < numArray.length; i++){
@@ -30,6 +27,7 @@
   }
   createButton()
   
+  const startButton = document.getElementById('start')
   startButton.addEventListener('click',()=>{
     while(playField.firstChild !== null){
       playField.removeChild(playField.firstChild)
@@ -40,16 +38,11 @@
       buttonElement.classList.replace('inactive','active')
       touchButton(buttonElement)
     })
-    //タイマー機能
-    startTime = Date.now()
-    intervalID = setInterval(() => {
-      updateScore()
-    },10)
+    startTimer()
   })
   
 
   let judgeNum = 0
-  
   const touchButton = (button) => { 
     button.addEventListener('click',() => {
       if(button.textContent == judgeNum){
@@ -64,6 +57,14 @@
   }
 
   const score = document.getElementById('score')
+  let startTime;
+  let intervalID;
+  const startTimer = () => {
+    startTime = Date.now()
+    intervalID = setInterval(() => {
+      updateScore()
+    },10)
+  }
   const updateScore = () => {
     const elapsedTime = new Date(Date.now() - startTime)
     const milliSeconds = String(elapsedTime.getMilliseconds()).padStart(3,'0')
