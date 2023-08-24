@@ -40,7 +40,7 @@
     })
     startTimer()
   })
-  
+
   let judgeNum = 0
   const touchButton = (button) => { 
     button.addEventListener('click',() => {
