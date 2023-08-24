@@ -41,7 +41,6 @@
     startTimer()
   })
   
-
   let judgeNum = 0
   const touchButton = (button) => { 
     button.addEventListener('click',() => {
@@ -51,12 +50,11 @@
       }
       if(judgeNum > buttonNum-1){
         judgeNum = 0
-        clearInterval(intervalID)
+        stopTimer()
       }
     })
   }
 
-  const score = document.getElementById('score')
   let startTime;
   let intervalID;
   const startTimer = () => {
@@ -65,6 +63,10 @@
       updateScore()
     },10)
   }
+  const stopTimer = () => {
+    clearInterval(intervalID)
+  }
+  const score = document.getElementById('score')
   const updateScore = () => {
     const elapsedTime = new Date(Date.now() - startTime)
     const milliSeconds = String(elapsedTime.getMilliseconds()).padStart(3,'0')
